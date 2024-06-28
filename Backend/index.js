@@ -56,6 +56,59 @@ app.post("/predict", (req, res) => {
   }
 });
 
+const fs = require("fs");
+const PDFParser = require("pdf-parse");
+
+/* // Function to read and parse PDF file
+function extractDataFromPDF(pdfPath) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(pdfPath, (err, data) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      // Using pdf-parse to extract text from PDF
+      PDFParser(data)
+        .then((pdf) => {
+          const text = pdf.text; // Extracted text from PDF
+          console.log("Extracted text:", text);
+
+          // Example: Parsing extracted text to find specific data
+          const ageRegex = /Age:\s*(\d+)/i;
+          const sexRegex = /Sex:\s*(\d+)/i;
+          const chestRegex = /Chest pain type:\s*(\d+)/i;
+
+          const ageMatch = text.match(ageRegex);
+          const sexMatch = text.match(sexRegex);
+          const chestMatch = text.match(chestRegex);
+
+          const extractedData = {
+            age: ageMatch ? parseInt(ageMatch[1]) : null,
+            /*  sex: sexMatch ? sexMatch[1] : null,
+            chest: chestMatch ? parseInt(chestMatch[1]) : null, 
+            // Add more fields as needed
+          };
+
+          resolve(extractedData);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  });
+}
+
+// Usage: Replace 'example.pdf' with your actual PDF file path
+extractDataFromPDF("HeartDiseaseReport.pdf")
+  .then((data) => {
+    console.log("Extracted data:", data);
+    // Pass 'data' to your machine learning model or further processing
+  })
+  .catch((error) => {
+    console.error("Error extracting data from PDF:", error);
+  });
+ */
 app.listen(8080, () => {
   console.log(`Listening to app at PORT 8080`);
 });
